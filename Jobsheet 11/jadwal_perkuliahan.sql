@@ -828,7 +828,7 @@ CREATE TABLE mahasiswa (
 UPDATE kelas
     SET kode_kelas = '2024010105',
     nama_kelas = 'SIB-1E'
-    WHERE kode_kelas = '2024010105';
+    WHERE kode_kelas = '2021010105';
 
 ALTER Table kelas
     MODIFY nama_kelas VARCHAR(10) NOT NULL;
