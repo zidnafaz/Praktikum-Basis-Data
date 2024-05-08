@@ -181,7 +181,8 @@ SELECT
 FROM 
     (SELECT DISTINCT jadwal.kode_dosen
      FROM jadwal
-     WHERE jadwal.kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Selasa')) AS kode_dosen_terpilih;
+     WHERE jadwal.kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Selasa'))
+     AS kode_dosen_terpilih;
 
 SELECT DISTINCT hari.nama_hari, dosen.kode_dosen, dosen.nama_dosen
 FROM dosen, hari, jadwal j
