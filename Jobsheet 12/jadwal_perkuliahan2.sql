@@ -175,17 +175,13 @@ FROM jadwal
 WHERE kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Kamis')
 AND jp_mulai = (SELECT kode_jp FROM jp WHERE jp_mulai = '08:40:00');
 
-SELECT COUNT(DISTINCT kode_dosen)
-FROM jadwal
-WHERE kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Selasa');
-
 SELECT 
     ROW_NUMBER() OVER () AS urutan,
     kode_dosen
 FROM 
-    (SELECT DISTINCT j.kode_dosen
-     FROM jadwal j
-     WHERE j.kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Selasa')) AS kode_dosen_terpilih;
+    (SELECT DISTINCT jadwal.kode_dosen
+     FROM jadwal
+     WHERE jadwal.kode_hari = (SELECT kode_hari FROM hari WHERE nama_hari = 'Selasa')) AS kode_dosen_terpilih;
 
 SELECT DISTINCT hari.nama_hari, dosen.kode_dosen, dosen.nama_dosen
 FROM dosen, hari, jadwal j
